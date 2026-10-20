@@ -2,6 +2,8 @@
 
 Ankara Etimesgut, Dökmeciler Sanayi Sitesi'ndeki **Aydın Oto Elektrik** için hazırlanmış ürün kataloğu ve tanıtım sitesi.
 
+🔗 **Canlı site:** https://ahmetefekoc61-bit.github.io/aydin-oto-elektrik/
+
 ![Ana sayfa](img/ekran-anasayfa.png)
 
 ## Özellikler
@@ -10,10 +12,16 @@ Ankara Etimesgut, Dökmeciler Sanayi Sitesi'ndeki **Aydın Oto Elektrik** için 
 - Tüm ürünlerde **anlık arama** (araç adı, parça no, OEM no)
 - 48'li sayfalama, mobil uyumlu tasarım, tek dokunuşla **Ara / WhatsApp / Yol Tarifi**
 - Ürün başına WhatsApp'tan hazır mesajla soru sorma
+- Hizmetler (dinamo tamiri, akü, oto elektrik, kalorifer, yol yardım ve takviye), sık sorulan sorular
+- 40 markanın logosuyla "Çalıştığımız Markalar" bölümü
 - Google Haritalar konumu, çalışma saatleri
 - **Ürün yönetim paneli** (`yonetim.html`): kategori sekmeleri, satır içi düzenleme, taslak kaydı, `urunler.js` dışa aktarma
 
 ![Akü sayfası](img/ekran-aku.png)
+
+![Hizmetler](img/ekran-hizmetler.png)
+
+![Çalıştığımız markalar](img/ekran-markalar.png)
 
 ## Teknik
 - Sunucu gerektirmeyen statik site (HTML + CSS + vanilla JavaScript), GitHub Pages üzerinde çalışır
