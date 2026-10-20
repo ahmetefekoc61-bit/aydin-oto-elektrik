@@ -8,6 +8,7 @@ const DUKKAN = {
   name:    "Aydın Oto Elektrik",
   phone:   "0532 464 64 18",   phoneRaw:"905324646418",
   wa:      "0530 478 57 97",   waRaw:   "905304785797",
+  email:   "aydinotoelektrik06@gmail.com",
   landline:"0312 278 70 98",   landRaw: "903122787098",
   address: "Bahçekapı Mah. Dökmeciler Sanayi Sitesi 2500. Cadde No: 8/6, Şaşmaz, Etimesgut / Ankara",
   mapQuery:"Dökmeciler Sanayi Sitesi 2500. Cadde Şaşmaz Etimesgut Ankara",
@@ -52,6 +53,7 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 const LINK = {
   tel: "tel:+" + DUKKAN.phoneRaw,
   land:"tel:+" + DUKKAN.landRaw,
+  mail:"mailto:" + DUKKAN.email,
   wa:  "https://wa.me/" + DUKKAN.waRaw,
   dir: "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(DUKKAN.konum || DUKKAN.mapQuery)
 };
@@ -234,6 +236,7 @@ function sayfaKur(aktif){
         <li><a href="${LINK.tel}">${esc(DUKKAN.phone)} (cep)</a></li>
         <li><a href="${LINK.land}">${esc(DUKKAN.landline)} (dükkan)</a></li>
         <li><a href="${LINK.wa}" target="_blank" rel="noopener">WhatsApp: ${esc(DUKKAN.wa)}</a></li>
+        <li><a href="${LINK.mail}">${esc(DUKKAN.email)}</a></li>
       </ul></div>
     </div>
     <div class="fbottom">© ${new Date().getFullYear()} ${esc(DUKKAN.name)}</div>
