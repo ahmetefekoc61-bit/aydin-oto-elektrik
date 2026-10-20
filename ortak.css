@@ -182,6 +182,7 @@ footer a:hover{color:#fff}
 .brands span.logo img{max-height:38px;max-width:118px;object-fit:contain}
 .brands span.logo.dolu{padding:6px}
 .brands span.logo.dolu img{max-height:52px;max-width:138px}
+.brands span.logo.siyah{background:#000;border-color:#000}
 .brands span.logo.koyu{background:var(--ink);border-color:var(--ink)}
 .brands span.yazi{font-size:16px;color:var(--ink);text-transform:uppercase;letter-spacing:1px;text-align:center;line-height:1.15}
 @media(max-width:560px){.brands span{width:calc(50% - 7px)}}

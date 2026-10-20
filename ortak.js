@@ -38,7 +38,9 @@ const DUKKAN = {
     {ad:"Maxtel",           logo:"img/markalar/maxtel.png"},
     {ad:"Sanel",            logo:"img/markalar/sanel.png"},
     {ad:"Üçler",            logo:"img/markalar/ucler.png"},
-    {ad:"ORS"}, {ad:"Superlight"}
+    {ad:"ORS",              logo:"img/markalar/ors.png"},
+    {ad:"Superlight",       logo:"img/markalar/superlight.png", dolu:true, siyah:true},
+    {ad:"3M",               logo:"img/markalar/3m.png"}
   ],
   hours: [
     ["Pazartesi","09:30 – 19:00"],["Salı","09:30 – 19:00"],["Çarşamba","09:30 – 19:00"],
@@ -349,7 +351,7 @@ function anaSayfa(){
   $("#brands").innerHTML = DUKKAN.brands.map(b => {
     const m = typeof b === "string" ? {ad:b} : b;
     return m.logo
-      ? `<span class="logo${m.koyu?' koyu':''}${m.dolu?' dolu':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.lang='en';this.parentNode.textContent=this.alt"></span>`
+      ? `<span class="logo${m.koyu?' koyu':''}${m.dolu?' dolu':''}${m.siyah?' siyah':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.lang='en';this.parentNode.textContent=this.alt"></span>`
       : `<span class="yazi" lang="en">${esc(m.ad)}</span>`;
   }).join("");
   const today = (new Date().getDay() + 6) % 7;
