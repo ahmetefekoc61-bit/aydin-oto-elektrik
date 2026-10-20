@@ -14,7 +14,7 @@ const DUKKAN = {
   mapQuery:"Dökmeciler Sanayi Sitesi 2500. Cadde Şaşmaz Etimesgut Ankara",
   // Haritadaki iğne: dükkanın tam koordinatı (Google Haritalar'da dükkana sağ tıklayınca çıkan sayılar).
   // Boş bırakılırsa yukarıdaki adres aranır.
-  konum:   "",
+  konum:   "39.942039,32.715594",
   // Toptancı (Arıcı) küçük ürün resimlerini göster. Arıcı izin vermezse false yapın, çizimler görünür.
   ariciResim: true,
   // Çalıştığımız markalar. logo boşsa ya da yüklenemezse marka adı yazı olarak görünür.
