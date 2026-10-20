@@ -32,7 +32,7 @@ const DUKKAN = {
     {ad:"HC-Cargo",         logo:"img/markalar/hc-cargo.svg"},
     {ad:"Lucas",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Lucas_Industries_Logo.png/330px-Lucas_Industries_Logo.png"},
     {ad:"NSK",              logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/NSK_Logo.svg/330px-NSK_Logo.svg.png"},
-    {ad:"ZM",               logo:"img/markalar/zm.png"},
+    {ad:"ZM",               logo:"img/markalar/zm.png", dolu:true},
     {ad:"Mega",             logo:"img/markalar/mega.png"},
     {ad:"Win Win",          logo:"img/markalar/winwin.png"},
     {ad:"Maxtel",           logo:"img/markalar/maxtel.png"},
