@@ -23,14 +23,22 @@ const DUKKAN = {
     {ad:"Esan Akü",         logo:"https://www.esanaku.com/site/img/esan_aku_logo.png"},
     {ad:"Bosch",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Bosch-logo.svg/330px-Bosch-logo.svg.png"},
     {ad:"Valeo",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Valeo_Logo.svg/330px-Valeo_Logo.svg.png"},
-    {ad:"Magneti Marelli",  logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Magneti_Marelli_logo.png/330px-Magneti_Marelli_logo.png"},
+    {ad:"Magneti Marelli",  logo:"img/markalar/magneti-marelli.png", dolu:true},
+    {ad:"Mako",             logo:"img/markalar/mako.png", dolu:true},
+    {ad:"Hella",            logo:"img/markalar/hella.png", dolu:true},
     {ad:"Osram",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Osram_Logo.svg/330px-Osram_Logo.svg.png"},
     {ad:"Philips",          logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Philips_logo_new.svg/330px-Philips_logo_new.svg.png"},
-    {ad:"Hella",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hella-logo.svg/330px-Hella-logo.svg.png"},
+    {ad:"Narva",            logo:"img/markalar/narva.png"},
+    {ad:"HC-Cargo",         logo:"img/markalar/hc-cargo.svg"},
     {ad:"Lucas",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Lucas_Industries_Logo.png/330px-Lucas_Industries_Logo.png"},
     {ad:"NSK",              logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/NSK_Logo.svg/330px-NSK_Logo.svg.png"},
-    {ad:"Narva"}, {ad:"HC-Cargo"}, {ad:"Mako"}, {ad:"ZM"}, {ad:"Mega"},
-    {ad:"Win Win"}, {ad:"ORS"}, {ad:"Superlight"}, {ad:"Maxtel"}
+    {ad:"ZM",               logo:"img/markalar/zm.png"},
+    {ad:"Mega",             logo:"img/markalar/mega.png"},
+    {ad:"Win Win",          logo:"img/markalar/winwin.png"},
+    {ad:"Maxtel",           logo:"img/markalar/maxtel.png"},
+    {ad:"Sanel",            logo:"img/markalar/sanel.png"},
+    {ad:"Üçler",            logo:"img/markalar/ucler.png"},
+    {ad:"ORS"}, {ad:"Superlight"}
   ],
   hours: [
     ["Pazartesi","09:30 – 19:00"],["Salı","09:30 – 19:00"],["Çarşamba","09:30 – 19:00"],
@@ -341,7 +349,7 @@ function anaSayfa(){
   $("#brands").innerHTML = DUKKAN.brands.map(b => {
     const m = typeof b === "string" ? {ad:b} : b;
     return m.logo
-      ? `<span class="logo${m.koyu?' koyu':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.lang='en';this.parentNode.textContent=this.alt"></span>`
+      ? `<span class="logo${m.koyu?' koyu':''}${m.dolu?' dolu':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.lang='en';this.parentNode.textContent=this.alt"></span>`
       : `<span class="yazi" lang="en">${esc(m.ad)}</span>`;
   }).join("");
   const today = (new Date().getDay() + 6) % 7;
