@@ -341,8 +341,8 @@ function anaSayfa(){
   $("#brands").innerHTML = DUKKAN.brands.map(b => {
     const m = typeof b === "string" ? {ad:b} : b;
     return m.logo
-      ? `<span class="logo${m.koyu?' koyu':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.textContent=this.alt"></span>`
-      : `<span class="yazi">${esc(m.ad)}</span>`;
+      ? `<span class="logo${m.koyu?' koyu':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.lang='en';this.parentNode.textContent=this.alt"></span>`
+      : `<span class="yazi" lang="en">${esc(m.ad)}</span>`;
   }).join("");
   const today = (new Date().getDay() + 6) % 7;
   $("#hours").innerHTML = DUKKAN.hours.map((h,i) => `<tr class="${i===today?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join("");
