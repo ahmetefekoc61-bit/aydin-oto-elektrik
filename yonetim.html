@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Ürün Yönetimi | Aydın Oto Elektrik</title>
-<link rel="icon" href="favicon.svg?v=202610201730" type="image/svg+xml">
+<link rel="icon" href="favicon.svg?v=202610201745" type="image/svg+xml">
 <link rel="canonical" href="https://ahmetefekoc61-bit.github.io/aydin-oto-elektrik/yonetim.html">
 <meta name="theme-color" content="#173a52">
 <meta property="og:type" content="website">
@@ -100,8 +100,8 @@
   </div>
 </div></main>
 
-<script src="kategoriler.js?v=202610201730"></script>
-<script src="urunler.js?v=202610201730"></script>
+<script src="kategoriler.js?v=202610201745"></script>
+<script src="urunler.js?v=202610201745"></script>
 <script>
 const KAT = window.KATEGORILER;
 const KEY = "aydin-urun-taslak-v4";
@@ -186,7 +186,7 @@ $("#dl").onclick = () => {
   const txt = `/* Aydın Oto Elektrik — ürün listesi (yonetim.html ile oluşturuldu)\n   kat: ${sira.join(" | ")} */\nwindow.URUNLER = [\n${lines.join(",\n")}\n];\n`;
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([txt], {type:"text/javascript"}));
-  a.download = "urunler.js?v=202610201730"; a.click();
+  a.download = "urunler.js?v=202610201745"; a.click();
 };
 tabs(); render();
 </script>
