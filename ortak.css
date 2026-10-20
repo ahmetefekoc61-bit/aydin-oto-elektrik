@@ -217,6 +217,8 @@ section[id]{scroll-margin-top:80px}
 .sss details[open] summary::after{content:"–"}
 .sss details p{color:#3d434b;padding:0 0 16px}
 .hero-art{display:none}
-.services{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.services{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.services{grid-template-columns:1fr}}
 .brand-logo{width:44px;height:44px;flex:none;border-radius:10px}
 footer{background:#122e42}.topbar{background:#122e42}
