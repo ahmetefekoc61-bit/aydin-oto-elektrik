@@ -353,5 +353,7 @@ function anaSayfa(){
   }).join("");
   const today = (new Date().getDay() + 6) % 7;
   $("#hours").innerHTML = DUKKAN.hours.map((h,i) => `<tr class="${i===today?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join("");
-  $("#map").src = "https://maps.google.com/maps?q=" + encodeURIComponent(DUKKAN.konum || DUKKAN.mapQuery) + "&z=17&output=embed";
+  // "Ad@enlem,boylam" biçimi iğneyi koordinata koyar ve üzerine dükkanın adını yazar (komşu işletmenin adı çıkmaz)
+  const harita = DUKKAN.konum ? DUKKAN.name + "@" + DUKKAN.konum : DUKKAN.mapQuery;
+  $("#map").src = "https://maps.google.com/maps?q=" + encodeURIComponent(harita) + "&z=18&output=embed";
 }
