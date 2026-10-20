@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /yonetim.html
+Sitemap: https://ahmetefekoc61-bit.github.io/aydin-oto-elektrik/sitemap.xml

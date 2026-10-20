@@ -204,7 +204,7 @@ function urunKart(u){
 
 /* ---------- Üst menü, alt bilgi, mobil butonlar ---------- */
 function sayfaKur(aktif){
-  const tum = [["index.html","Ana Sayfa","ana"], ...Object.entries(KAT).map(([key,k]) => [k.sayfa, k.ad, key]), ["index.html#hakkimizda","Hakkımızda","hakkimizda"], ["index.html#iletisim","İletişim","iletisim"]];
+  const tum = [["index.html","Ana Sayfa","ana"], ...Object.entries(KAT).map(([key,k]) => [k.sayfa, k.kisa || k.ad, key]), ["index.html#hakkimizda","Hakkımızda","hakkimizda"], ["index.html#iletisim","İletişim","iletisim"]];
   const ust = [["index.html","Ana Sayfa","ana"], ...Object.entries(KAT).filter(([,k]) => k.menu).map(([key,k]) => [k.sayfa, k.kisa || k.ad, key]),
                ["index.html#hakkimizda","Hakkımızda","hakkimizda"], ["index.html#iletisim","İletişim","iletisim"]];
   const linkler = arr => arr.map(([h,t,key]) => `<a href="${h}" class="${key===aktif?'on':''}">${esc(t)}</a>`).join("");
