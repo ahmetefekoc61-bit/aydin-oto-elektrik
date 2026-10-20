@@ -213,3 +213,4 @@ section[id]{scroll-margin-top:80px}
 .sss details p{color:#3d434b;padding:0 0 16px}
 .hero-art{display:none}
 .services{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.brand-logo{width:44px;height:44px;flex:none;border-radius:10px}

@@ -217,7 +217,7 @@ function sayfaKur(aktif){
   <header>
     <div class="wrap hrow">
       <a href="index.html" class="brand">
-        <span class="brand-mark">${IC.bolt}</span>
+        <img class="brand-logo" src="img/logo.svg" alt="Aydın Oto Elektrik logosu" width="44" height="44">
         <span><b>${esc(DUKKAN.name)}</b><small>Akü · Marş · Şarj Dinamosu · Oto Elektrik</small></span>
       </a>
       <nav class="main">${links}</nav>
