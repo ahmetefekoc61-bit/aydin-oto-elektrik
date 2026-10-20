@@ -19,25 +19,18 @@ const DUKKAN = {
   ariciResim: true,
   // Çalıştığımız markalar. logo boşsa ya da yüklenemezse marka adı yazı olarak görünür.
   brands: [
-    {ad:"Mutlu Akü",        logo:"https://www.mutlu.com.tr/images/logo.svg"},
+    {ad:"Mutlu Akü",        logo:"https://www.mutlu.com.tr/images/logo.svg", koyu:true},
     {ad:"Esan Akü",         logo:"https://www.esanaku.com/site/img/esan_aku_logo.png"},
-    {ad:"Bosch",            logo:""},
-    {ad:"Valeo",            logo:"https://www.valeo.com/wp-content/uploads/2025/11/logo-valeo-signature-2025_210x110.png"},
-    {ad:"Magneti Marelli",  logo:"https://www.marelli.com/content/experience-fragments/marelli/en/site/footer/master/_jcr_content/root/footer_v2_copy/logo.coreimg.svg/1717166889182/fe9ec73ff2da4fbc0c05.svg"},
-    {ad:"Osram",            logo:""},
-    {ad:"Narva",            logo:"https://static.wixstatic.com/media/ae96f6_1a6a5909a5de45e3a9dba7d357cc3ebe~mv2.png/v1/fill/w_236,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/NARVA_WEBSITE_Logo%20for%20Header_No%20Margin.png"},
-    {ad:"Philips",          logo:""},
-    {ad:"Hella",            logo:""},
-    {ad:"HC-Cargo",         logo:""},
-    {ad:"Lucas",            logo:""},
-    {ad:"Mako",             logo:""},
-    {ad:"ZM",               logo:""},
-    {ad:"Mega",             logo:""},
-    {ad:"Win Win",          logo:""},
-    {ad:"NSK",              logo:""},
-    {ad:"ORS",              logo:""},
-    {ad:"Superlight",       logo:""},
-    {ad:"Maxtel",           logo:""}
+    {ad:"Bosch",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Bosch-logo.svg/330px-Bosch-logo.svg.png"},
+    {ad:"Valeo",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Valeo_Logo.svg/330px-Valeo_Logo.svg.png"},
+    {ad:"Magneti Marelli",  logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Magneti_Marelli_logo.png/330px-Magneti_Marelli_logo.png"},
+    {ad:"Osram",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Osram_Logo.svg/330px-Osram_Logo.svg.png"},
+    {ad:"Philips",          logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Philips_logo_new.svg/330px-Philips_logo_new.svg.png"},
+    {ad:"Hella",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hella-logo.svg/330px-Hella-logo.svg.png"},
+    {ad:"Lucas",            logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Lucas_Industries_Logo.png/330px-Lucas_Industries_Logo.png"},
+    {ad:"NSK",              logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/NSK_Logo.svg/330px-NSK_Logo.svg.png"},
+    {ad:"Narva"}, {ad:"HC-Cargo"}, {ad:"Mako"}, {ad:"ZM"}, {ad:"Mega"},
+    {ad:"Win Win"}, {ad:"ORS"}, {ad:"Superlight"}, {ad:"Maxtel"}
   ],
   hours: [
     ["Pazartesi","09:30 – 19:00"],["Salı","09:30 – 19:00"],["Çarşamba","09:30 – 19:00"],
@@ -348,8 +341,8 @@ function anaSayfa(){
   $("#brands").innerHTML = DUKKAN.brands.map(b => {
     const m = typeof b === "string" ? {ad:b} : b;
     return m.logo
-      ? `<span class="logo" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('logo');this.parentNode.textContent=this.alt"></span>`
-      : `<span>${esc(m.ad)}</span>`;
+      ? `<span class="logo${m.koyu?' koyu':''}" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.className='yazi';this.parentNode.textContent=this.alt"></span>`
+      : `<span class="yazi">${esc(m.ad)}</span>`;
   }).join("");
   const today = (new Date().getDay() + 6) % 7;
   $("#hours").innerHTML = DUKKAN.hours.map((h,i) => `<tr class="${i===today?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join("");
