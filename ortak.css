@@ -1,6 +1,6 @@
 /* Aydın Oto Elektrik — tüm sayfaların ortak stili */
 :root{
-  --ink:#16191d; --body:#f3f4f6; --card:#fff; --line:#e3e5e8;
+  --ink:#173a52; --body:#f3f4f6; --card:#fff; --line:#e3e5e8;
   --text:#1b1e22; --muted:#6b7280; --accent:#f2b705; --accent-d:#b98a00;
   --red:#c8312b; --green:#1fa855;
 }
@@ -49,7 +49,7 @@ nav.mobile a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 
 /* Ana sayfa hero */
 .hero{position:relative;background:
-    linear-gradient(100deg,rgba(14,16,19,.94) 0%,rgba(14,16,19,.82) 55%,rgba(14,16,19,.55) 100%),
+    linear-gradient(100deg,rgba(15,38,55,.94) 0%,rgba(15,38,55,.82) 55%,rgba(15,38,55,.55) 100%),
     url("img/dukkan.jpg") center/cover, var(--ink);
   color:#fff;overflow:hidden}
 .hero .wrap{position:relative;z-index:1;padding:80px 16px 88px}
@@ -160,7 +160,7 @@ footer{background:var(--ink);color:#9aa1ab;font-size:14px;padding:36px 0 28px}
 footer h4{color:#fff;font-size:14px;margin-bottom:10px}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:6px}
 footer a:hover{color:#fff}
-.fbottom{border-top:1px solid #2a2e34;margin-top:28px;padding-top:16px;font-size:13px}
+.fbottom{border-top:1px solid #2c5470;margin-top:28px;padding-top:16px;font-size:13px}
 
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;gap:8px;padding:10px 16px;background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.06)}
 .sticky-cta .btn{flex:1;padding:12px 8px}
@@ -214,3 +214,4 @@ section[id]{scroll-margin-top:80px}
 .hero-art{display:none}
 .services{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .brand-logo{width:44px;height:44px;flex:none;border-radius:10px}
+footer{background:#122e42}.topbar{background:#122e42}
