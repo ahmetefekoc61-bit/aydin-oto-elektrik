@@ -1,0 +1,37 @@
+AYDIN OTO ELEKTRİK - WEB SİTESİ
+================================
+
+SAYFALAR
+  index.html           -> Ana sayfa (ürün grupları, hizmetler, harita, iletişim)
+  aku.html             -> Aküler
+  mars-dinamosu.html   -> Marş motorları ve parçaları
+  sarj-dinamosu.html   -> Alternatörler ve parçaları
+  ampul.html           -> Ampuller
+  aydinlatma.html      -> Stop, side marker, far, lambalar
+  elektrik.html        -> Kablo, sigorta, röle, korna, soket
+  silecek.html         -> Silecek ve su motorları
+  diger.html           -> Fren, filtre, ısıtıcı vb.
+  yonetim.html         -> Ürün dashboard'u (her kategori ayrı sekmede)
+
+ORTAK DOSYALAR (genelde dokunmanız gerekmez)
+  urunler.js     -> Tüm ürünler (yonetim.html bu dosyayı üretir)
+  kategoriler.js -> Kategoriler ve her birinin özellik alanları
+  ortak.js       -> Dükkan bilgileri (telefon, adres, saatler) + menü
+  ortak.css      -> Görünüm
+  img\           -> Fotoğraflar
+
+ÜRÜN EKLEME / FİYAT GÜNCELLEME
+  1. yonetim.html'i açın, üstten sekmeyi seçin (Aküler, Marş Dinamoları...).
+  2. "+ Ürün ekle" ile ekleyin ya da var olanı düzenleyin.
+  3. "urunler.js indir" -> inen dosyayı bu klasördeki urunler.js'nin üzerine kopyalayın.
+  4. GitHub'a yükleyin (Add file -> Upload files -> Commit changes).
+
+FOTOĞRAF
+  img\dukkan.jpg        -> Ana sayfanın arka planı
+  img\mutlu-60.jpg vb.  -> Ürün fotoğrafı; dashboard'da "Fotoğraf" kutusuna img/mutlu-60.jpg yazın.
+
+YAYINLAMA (GitHub Pages)
+  1. github.com -> New repository -> aydin-oto-elektrik (Public)
+  2. Bu klasördeki her şeyi (img klasörü dahil) sürükleyip yükleyin.
+  3. Settings -> Pages -> Branch: main -> Save
+  4. Adres: https://ahmetefekoc61-bit.github.io/aydin-oto-elektrik

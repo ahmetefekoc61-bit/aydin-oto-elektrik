@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ürün Yönetimi | Aydın Oto Elektrik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#16191d;--body:#f3f4f6;--line:#e3e5e8;--muted:#6b7280;--accent:#f2b705;--red:#c8312b;--green:#1fa855}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--body);font-family:Inter,system-ui,sans-serif;color:#1b1e22;font-size:15px}
+  header{background:var(--ink);color:#fff}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:12px}
+  header b{font-weight:800}
+  header a{color:#c9ced6;font-size:14px;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+  main{padding:24px 0 60px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .kpi span{font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .kpi b{display:block;font-size:28px;font-weight:800;margin-top:4px}
+  .tabs{display:flex;gap:4px;overflow-x:auto;margin-bottom:-1px;position:relative;z-index:1}
+  .tabs button{border:1px solid var(--line);border-bottom:0;background:#e9ebee;padding:11px 16px;border-radius:10px 10px 0 0;font:700 14px Inter,sans-serif;cursor:pointer;white-space:nowrap;color:#4b5159}
+  .tabs button.on{background:#fff;color:#111}
+  .tabs button span{display:inline-block;min-width:22px;margin-left:6px;padding:1px 6px;border-radius:999px;background:var(--body);font-size:12px;color:var(--muted)}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:0 10px 10px 10px;overflow:hidden}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .toolbar h2{font-size:18px}
+  .btn{border:0;border-radius:6px;padding:10px 14px;font:700 14px Inter,sans-serif;cursor:pointer}
+  .btn-y{background:var(--accent);color:#111}
+  .btn-d{background:var(--ink);color:#fff}
+  .btn-l{background:#fff;border:1px solid var(--line)}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:1500px}
+  input.genis{min-width:320px}
+  .ara{border:1px solid var(--line);border-radius:6px;padding:9px 12px;font:500 14px Inter,sans-serif;min-width:240px}
+  th{text-align:left;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 8px;background:#fafbfc;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+  input[type=text],input[type=number]{width:100%;border:1px solid var(--line);border-radius:6px;padding:8px 9px;font:500 14px Inter,sans-serif;background:#fff}
+  input[type=number]{min-width:72px}
+  input:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+  .switch{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;font-size:13px;white-space:nowrap}
+  .del{background:none;border:0;color:var(--red);font-weight:700;cursor:pointer;font-size:13px}
+  .emptyrow td{text-align:center;color:var(--muted);padding:30px}
+  .note{margin-top:16px;background:#fff8e1;border:1px solid #f5d77a;border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.7}
+  .note b{font-weight:700}
+  .saved{font-size:13px;color:var(--green);font-weight:600}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <b>Aydın Oto Elektrik · Ürün Yönetimi</b>
+  <a id="sitelink" href="index.html" target="_blank">Sayfayı aç ↗</a>
+</div></header>
+
+<main><div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><span>Toplam ürün</span><b id="k1">0</b></div>
+    <div class="kpi"><span>Fiyatı girilen</span><b id="k2">0</b></div>
+    <div class="kpi"><span>Stokta</span><b id="k3">0</b></div>
+    <div class="kpi"><span>Fotoğraflı</span><b id="k4">0</b></div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="panel">
+    <div class="toolbar">
+      <h2><span id="katad"></span> <span class="saved" id="saved"></span></h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input class="ara" id="ara" type="search" placeholder="Bu sekmede ara...">
+        <button class="btn btn-l" id="reset">Değişiklikleri geri al</button>
+        <button class="btn btn-d" id="add">+ Ürün ekle</button>
+        <button class="btn btn-y" id="dl">urunler.js indir</button>
+      </div>
+    </div>
+    <div class="scroll"><table>
+      <thead id="head"></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+  </div>
+
+  <div class="note">
+    <b>Siteye nasıl aktarırım?</b><br>
+    1) Sekmeden kategoriyi seçin, ürünleri ekleyin ya da düzenleyin. Fiyatı boş bırakırsanız sitede "Fiyat için arayın" yazar.<br>
+    2) <b>urunler.js indir</b> butonuna basın. Tüm kategoriler tek dosyaya yazılır.<br>
+    3) İnen dosyayı proje klasöründeki <b>urunler.js</b>'nin üzerine kopyalayın, sonra GitHub'a <b>Add file → Upload files</b> ile yükleyin.<br>
+    Fotoğraf: resmi <b>img</b> klasörüne koyup fotoğraf sütununa adını yazın, ör. <i>img/mutlu-60.jpg</i>.<br>
+    Değişiklikler dosyayı indirene kadar sadece bu bilgisayarda taslak olarak kalır.
+  </div>
+</div></main>
+
+<script src="kategoriler.js"></script>
+<script src="urunler.js"></script>
+<script>
+const KAT = window.KATEGORILER;
+const KEY = "aydin-urun-taslak-v4";
+const original = JSON.parse(JSON.stringify(window.URUNLER || []));
+let data;
+try { data = JSON.parse(localStorage.getItem(KEY)) || null; } catch(e) { data = null; }
+if (!Array.isArray(data)) data = JSON.parse(JSON.stringify(original));
+let aktif = Object.keys(KAT)[0];
+try { const t = localStorage.getItem(KEY + "-tab"); if (KAT[t]) aktif = t; } catch(e) {}
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ORTAK_ONCE = [{k:"marka",ad:"Marka",tip:"text"},{k:"ad",ad:"Ürün adı",tip:"text",genis:true}];
+const ORTAK_SONRA = [{k:"kullanim",ad:"Kullanım / Açıklama",tip:"text"},{k:"fiyat",ad:"Fiyat",tip:"text",ipucu:"ör. 3.250 ₺"},{k:"foto",ad:"Fotoğraf",tip:"text",ipucu:"img/..."},{k:"parcano",ad:"Parça no",tip:"text"},{k:"oem",ad:"OEM / Ref no",tip:"text"}];
+const kolonlar = key => [...ORTAK_ONCE, ...KAT[key].alanlar, ...ORTAK_SONRA];
+
+function save(){
+  try { localStorage.setItem(KEY, JSON.stringify(data)); $("#saved").textContent = "· taslak kaydedildi"; } catch(e) {}
+  kpis(); tabs();
+}
+function kpis(){
+  $("#k1").textContent = data.length;
+  $("#k2").textContent = data.filter(u => u.fiyat).length;
+  $("#k3").textContent = data.filter(u => u.stok !== false).length;
+  $("#k4").textContent = data.filter(u => u.foto).length;
+}
+function tabs(){
+  $("#tabs").innerHTML = Object.entries(KAT).map(([key,k]) =>
+    `<button class="${key===aktif?'on':''}" data-t="${key}">${esc(k.ad)}<span>${data.filter(u=>u.kat===key).length}</span></button>`).join("");
+  $("#tabs").querySelectorAll("button").forEach(b => b.onclick = () => {
+    aktif = b.dataset.t; window.__limit = 100; try{localStorage.setItem(KEY+"-tab",aktif)}catch(e){} tabs(); render(); });
+}
+function render(){
+  const k = KAT[aktif], cols = kolonlar(aktif);
+  $("#katad").textContent = k.ad;
+  $("#sitelink").href = k.sayfa;
+  $("#head").innerHTML = `<tr>${cols.map(c => `<th>${esc(c.ad)}${c.birim ? ` (${esc(c.birim)})` : ""}</th>`).join("")}<th>Stok</th><th></th></tr>`;
+  const q = ($("#ara").value||"").toLocaleLowerCase("tr").split(/\s+/).filter(Boolean);
+  const satirlar = data.map((u,i) => ({u,i})).filter(x => x.u.kat === aktif &&
+    (!q.length || q.every(w => Object.values(x.u).join(" ").toLocaleLowerCase("tr").includes(w))));
+  const toplam = satirlar.length;
+  $("#rows").innerHTML = toplam ? satirlar.slice(0, window.__limit || 100).map(({u,i}) => `<tr>
+    ${cols.map(c => `<td><input type="${c.tip==="number"?"number":"text"}" data-i="${i}" data-k="${c.k}" data-t="${c.tip}" value="${esc(u[c.k])}" placeholder="${esc(c.ipucu||"")}" class="${c.genis?'genis':''}" title="${esc(u[c.k])}"></td>`).join("")}
+    <td><label class="switch"><input type="checkbox" data-i="${i}" data-k="stok" ${u.stok!==false?"checked":""}> Var</label></td>
+    <td><button class="del" data-del="${i}">Sil</button></td>
+  </tr>`).join("") + (toplam > (window.__limit||100) ? `<tr class="emptyrow"><td colspan="${cols.length+2}"><button class="btn btn-l" id="dahaSatir">${toplam - (window.__limit||100)} satır daha göster</button> &nbsp; ya da yukarıdan arayın</td></tr>` : "") : `<tr class="emptyrow"><td colspan="${cols.length+2}">Bu kategoride henüz ürün yok. <b>+ Ürün ekle</b> ile başlayın.</td></tr>`;
+  const ds = $("#dahaSatir"); if (ds) ds.onclick = () => { window.__limit = (window.__limit||100) + 200; render(); };
+  $("#rows").querySelectorAll("input").forEach(inp => inp.addEventListener("input", () => {
+    const u = data[inp.dataset.i], key = inp.dataset.k;
+    if (key === "stok") u.stok = inp.checked;
+    else if (inp.dataset.t === "number") u[key] = inp.value === "" ? "" : Number(inp.value);
+    else u[key] = inp.value.trim();
+    save();
+  }));
+  $("#rows").querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
+    const u = data[b.dataset.del];
+    if (confirm(`${u.marka || ""} ${KAT[u.kat].tekil} silinsin mi?`)) { data.splice(b.dataset.del,1); save(); render(); }
+  });
+  kpis();
+}
+$("#ara").oninput = () => { window.__limit = 100; render(); };
+$("#add").onclick = () => {
+  $("#ara").value = "";
+  const k = KAT[aktif], yeni = {kat:aktif, marka:"", ad:""};
+  k.alanlar.forEach(a => yeni[a.k] = a.varsayilan ?? "");
+  Object.assign(yeni, {kullanim:"", fiyat:"", stok:true, foto:""});
+  data.push(yeni); save(); render();
+  const r = $("#rows").lastElementChild; if (r) { r.scrollIntoView({behavior:"smooth",block:"center"}); const f = r.querySelector("input"); f && f.focus(); }
+};
+$("#reset").onclick = () => { if (confirm("İndirilmemiş tüm değişiklikler silinsin mi?")) {
+  data = JSON.parse(JSON.stringify(original)); try{localStorage.removeItem(KEY)}catch(e){} $("#saved").textContent=""; tabs(); render(); } };
+$("#dl").onclick = () => {
+  const sira = Object.keys(KAT);
+  const sirali = data.slice().sort((a,b) => sira.indexOf(a.kat) - sira.indexOf(b.kat));
+  const lines = sirali.map(u => {
+    const o = {kat:u.kat, marka:u.marka||"", ad:u.ad||"", parcano:u.parcano||"", oem:u.oem||""};
+    (KAT[u.kat]?.alanlar || []).forEach(a => o[a.k] = u[a.k] ?? "");
+    Object.assign(o, {kullanim:u.kullanim||"", fiyat:u.fiyat||"", stok:u.stok!==false, foto:u.foto||""});
+    if (u.aid) { o.aid = u.aid; o.resim = !!u.resim; }
+    return "  " + JSON.stringify(o);
+  });
+  const txt = `/* Aydın Oto Elektrik — ürün listesi (yonetim.html ile oluşturuldu)\n   kat: ${sira.join(" | ")} */\nwindow.URUNLER = [\n${lines.join(",\n")}\n];\n`;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([txt], {type:"text/javascript"}));
+  a.download = "urunler.js"; a.click();
+};
+tabs(); render();
+</script>
+</body>
+</html>
