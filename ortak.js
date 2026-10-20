@@ -11,9 +11,33 @@ const DUKKAN = {
   landline:"0312 278 70 98",   landRaw: "903122787098",
   address: "Bahçekapı Mah. Dökmeciler Sanayi Sitesi 2500. Cadde No: 8/6, Şaşmaz, Etimesgut / Ankara",
   mapQuery:"Dökmeciler Sanayi Sitesi 2500. Cadde Şaşmaz Etimesgut Ankara",
+  // Haritadaki iğne: dükkanın tam koordinatı (Google Haritalar'da dükkana sağ tıklayınca çıkan sayılar).
+  // Boş bırakılırsa yukarıdaki adres aranır.
+  konum:   "",
   // Toptancı (Arıcı) küçük ürün resimlerini göster. Arıcı izin vermezse false yapın, çizimler görünür.
   ariciResim: true,
-  brands:  ["Mutlu Akü","Esan Akü","Bosch","Valeo","NSK","ORS","Win Win"],
+  // Çalıştığımız markalar. logo boşsa ya da yüklenemezse marka adı yazı olarak görünür.
+  brands: [
+    {ad:"Mutlu Akü",        logo:"https://www.mutlu.com.tr/images/logo.svg"},
+    {ad:"Esan Akü",         logo:"https://www.esanaku.com/site/img/esan_aku_logo.png"},
+    {ad:"Bosch",            logo:""},
+    {ad:"Valeo",            logo:"https://www.valeo.com/wp-content/uploads/2025/11/logo-valeo-signature-2025_210x110.png"},
+    {ad:"Magneti Marelli",  logo:"https://www.marelli.com/content/experience-fragments/marelli/en/site/footer/master/_jcr_content/root/footer_v2_copy/logo.coreimg.svg/1717166889182/fe9ec73ff2da4fbc0c05.svg"},
+    {ad:"Osram",            logo:""},
+    {ad:"Narva",            logo:"https://static.wixstatic.com/media/ae96f6_1a6a5909a5de45e3a9dba7d357cc3ebe~mv2.png/v1/fill/w_236,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/NARVA_WEBSITE_Logo%20for%20Header_No%20Margin.png"},
+    {ad:"Philips",          logo:""},
+    {ad:"Hella",            logo:""},
+    {ad:"HC-Cargo",         logo:""},
+    {ad:"Lucas",            logo:""},
+    {ad:"Mako",             logo:""},
+    {ad:"ZM",               logo:""},
+    {ad:"Mega",             logo:""},
+    {ad:"Win Win",          logo:""},
+    {ad:"NSK",              logo:""},
+    {ad:"ORS",              logo:""},
+    {ad:"Superlight",       logo:""},
+    {ad:"Maxtel",           logo:""}
+  ],
   hours: [
     ["Pazartesi","08:30 – 19:00"],["Salı","08:30 – 19:00"],["Çarşamba","08:30 – 19:00"],
     ["Perşembe","08:30 – 19:00"],["Cuma","08:30 – 19:00"],["Cumartesi","08:30 – 17:00"],["Pazar","Kapalı"]
@@ -29,7 +53,7 @@ const LINK = {
   tel: "tel:+" + DUKKAN.phoneRaw,
   land:"tel:+" + DUKKAN.landRaw,
   wa:  "https://wa.me/" + DUKKAN.waRaw,
-  dir: "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(DUKKAN.mapQuery)
+  dir: "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(DUKKAN.konum || DUKKAN.mapQuery)
 };
 const IC = {
   tel: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>',
@@ -178,9 +202,9 @@ function urunKart(u){
 
 /* ---------- Üst menü, alt bilgi, mobil butonlar ---------- */
 function sayfaKur(aktif){
-  const tum = [["index.html","Ana Sayfa","ana"], ...Object.entries(KAT).map(([key,k]) => [k.sayfa, k.ad, key]), ["index.html#iletisim","İletişim","iletisim"]];
+  const tum = [["index.html","Ana Sayfa","ana"], ...Object.entries(KAT).map(([key,k]) => [k.sayfa, k.ad, key]), ["index.html#hakkimizda","Hakkımızda","hakkimizda"], ["index.html#iletisim","İletişim","iletisim"]];
   const ust = [["index.html","Ana Sayfa","ana"], ...Object.entries(KAT).filter(([,k]) => k.menu).map(([key,k]) => [k.sayfa, k.kisa || k.ad, key]),
-               ["index.html#urunler","Tüm Ürünler", Object.entries(KAT).some(([key,k]) => key===aktif && !k.menu) ? aktif : "x"], ["index.html#iletisim","İletişim","iletisim"]];
+               ["index.html#hakkimizda","Hakkımızda","hakkimizda"], ["index.html#iletisim","İletişim","iletisim"]];
   const linkler = arr => arr.map(([h,t,key]) => `<a href="${h}" class="${key===aktif?'on':''}">${esc(t)}</a>`).join("");
   const links = linkler(ust), mlinks = linkler(tum);
   $("#ust").outerHTML = `
@@ -318,8 +342,13 @@ function anaSayfa(){
     };
     kutu.oninput = () => { limit = 48; ciz(); };
   }
-  $("#brands").innerHTML = DUKKAN.brands.map(b => `<span>${esc(b)}</span>`).join("");
+  $("#brands").innerHTML = DUKKAN.brands.map(b => {
+    const m = typeof b === "string" ? {ad:b} : b;
+    return m.logo
+      ? `<span class="logo" title="${esc(m.ad)}"><img src="${esc(m.logo)}" alt="${esc(m.ad)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('logo');this.parentNode.textContent=this.alt"></span>`
+      : `<span>${esc(m.ad)}</span>`;
+  }).join("");
   const today = (new Date().getDay() + 6) % 7;
   $("#hours").innerHTML = DUKKAN.hours.map((h,i) => `<tr class="${i===today?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join("");
-  $("#map").src = "https://maps.google.com/maps?q=" + encodeURIComponent(DUKKAN.mapQuery) + "&z=16&output=embed";
+  $("#map").src = "https://maps.google.com/maps?q=" + encodeURIComponent(DUKKAN.konum || DUKKAN.mapQuery) + "&z=17&output=embed";
 }

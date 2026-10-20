@@ -176,3 +176,23 @@ footer a:hover{color:#fff}
 .genel-ara input{flex:1;border:0;outline:0;font:500 16px Inter,sans-serif;padding:10px 0;min-width:0;background:transparent}
 .p-img img{background:#fff}
 .filters button.tumu-ac{border-style:dashed;color:var(--accent-d)}
+
+/* Marka logoları */
+.brands span{display:inline-flex;align-items:center;justify-content:center;min-height:52px}
+.brands span.logo{background:#fff;padding:8px 18px}
+.brands span.logo img{height:34px;max-width:140px;object-fit:contain}
+/* Hakkımızda */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+.about p{color:#3d434b;font-size:16.5px;margin-bottom:14px}
+.about .yil{display:flex;gap:16px;align-items:center;background:var(--ink);color:#fff;border-radius:12px;padding:22px 24px;margin-bottom:16px}
+.about .yil b{font-size:52px;font-weight:800;color:var(--accent);line-height:1}
+.about .yil span{font-size:15px;color:#c9ced6}
+.about ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.about ul{grid-template-columns:1fr}}
+.about li{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-weight:600;font-size:14.5px;display:flex;gap:8px;align-items:flex-start}
+.about li::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;border-radius:2px;background:var(--accent)}
+nav.main{gap:16px;font-size:14px}
+.brand b{white-space:nowrap}
+@media (max-width:1280px){.brand small{display:none}}
+section[id]{scroll-margin-top:80px}

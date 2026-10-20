@@ -17,7 +17,7 @@ window.KATEGORILER = {
     baslik: "{volt}V {ah} Ah Akü", rozet: "ah", rozetBirim: "Ah"
   },
   mars: {
-    ad: "Marş Dinamoları", kisa: "Marş", tekil: "Marş Dinamosu", sayfa: "mars-dinamosu.html", menu: true, filtre: "tur", oncelik: ["Marş motoru"],
+    ad: "Marş Dinamosu ve Parçaları", kisa: "Marş Dinamosu", tekil: "Marş Dinamosu", sayfa: "mars-dinamosu.html", menu: true, filtre: "tur", oncelik: ["Marş motoru"],
     aciklama: "Komple marş motorları ve yedek parçaları: otomatik, kollektör, dişli, kömür, burç.",
     alanlar: [
       { k: "tur",  ad: "Parça türü", birim: "",   tip: "text", ipucu: "Marş motoru, Otomatik..." },
@@ -28,7 +28,7 @@ window.KATEGORILER = {
     baslik: "{tur}", rozet: "volt", rozetBirim: "V"
   },
   sarj: {
-    ad: "Şarj Dinamoları", kisa: "Şarj", tekil: "Şarj Dinamosu", sayfa: "sarj-dinamosu.html", menu: true, filtre: "tur", oncelik: ["Alternatör (komple)"],
+    ad: "Şarj Dinamosu ve Parçaları", kisa: "Şarj Dinamosu", tekil: "Şarj Dinamosu", sayfa: "sarj-dinamosu.html", menu: true, filtre: "tur", oncelik: ["Alternatör (komple)"],
     aciklama: "Alternatörler ve yedek parçaları: konjektör, statör, diyot, kömür, kasnak.",
     alanlar: [
       { k: "tur",   ad: "Parça türü", birim: "",  tip: "text", ipucu: "Alternatör, Konjektör..." },
